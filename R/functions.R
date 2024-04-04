@@ -235,13 +235,10 @@ previewData <- function(df) {
 }
 
 
-#' Calculate Baseline Nutrient Inadequacy
-#' @name calculateBaselineInadequacy
-#' @description Calc
+#' @title calculateBaselineInadequacy
+#' @description Calculate Baseline Nutrient Inadequacy
 #'
 #' @details
-#' This function can be used to do some things
-#'
 #' This function calculates the baseline inadequacy of nutrients for different administrative groups.
 #'
 #' @param MNList A character vector of nutrients. If empty, defaults to a list of all nutrients.
