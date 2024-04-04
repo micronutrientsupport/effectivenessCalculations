@@ -237,6 +237,10 @@ previewData <- function(df) {
 
 #' Calculate Baseline Nutrient Inadequacy
 #' @name calculateBaselineInadequacy
+#' @description Calc
+#'
+#' @details
+#' This function can be used to do some things
 #'
 #' This function calculates the baseline inadequacy of nutrients for different administrative groups.
 #'
