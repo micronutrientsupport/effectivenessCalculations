@@ -238,18 +238,14 @@ previewData <- function(df) {
 #' @title calculateBaselineInadequacy
 #' @description Calculate Baseline Nutrient Inadequacy
 #'
-#' @details
-#' This function calculates the baseline inadequacy of nutrients for different administrative groups.
+#' @details This function calculates the baseline inadequacy of nutrients for different administrative groups.
 #'
 #' @param MNList A character vector of nutrients. If empty, defaults to a list of all nutrients.
 #' @param aggregationGroup A character vector of administrative groups. Must not be empty.
 #' @param dataDir The directory where the data is stored.
 #'
-#' @return A dataframe with the baseline inadequacy of nutrients for the specified administrative groups.
+#' @return
 #' @export
-#'
-#' @examples
-#' calculateBaselineInadequacy(MNList = c("A", "Ca"))
 calculateBaselineInadequacy <- function(MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name"), dataDir = here::here("data/sd123")) {
     # Check if MNList is a character vector
     if (!is.character(MNList)) {
