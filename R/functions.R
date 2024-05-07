@@ -247,6 +247,10 @@ previewData <- function(df) {
 #' @return
 #' @export
 calculateBaselineInadequacy <- function(householdDetails, householdConsumption, nctList, intakeThresholds, MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name")) {
+
+  # Start measuring time
+  start_time <- proc.time()
+    
     # Check if MNList is a character vector
     if (!is.character(MNList)) {
         stop("MNList must be a character vector")
@@ -480,7 +484,15 @@ calculateBaselineInadequacy <- function(householdDetails, householdConsumption, 
         dplyr::select(all_of(columnOrder)) |>
         dplyr::select(aggregationGroup, households, everything())
 
+    # End measuring time
+  end_time <- proc.time()
 
+      # Calculate elapsed time
+  elapsed_time <- end_time - start_time
+  
+  # Print or return elapsed time
+  print(elapsed_time)
+    
     return(baselineAdequacyPrevalence)
 }
 
