@@ -246,7 +246,7 @@ previewData <- function(df) {
 #'
 #' @return
 #' @export
-calculateBaselineInadequacy <- function(MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name"), dataDir = here::here("data/sd123")) {
+calculateBaselineInadequacy <- function(householdDetails, householdConsumption, nctList, intakeThresholds, MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name")) {
     # Check if MNList is a character vector
     if (!is.character(MNList)) {
         stop("MNList must be a character vector")
@@ -263,19 +263,19 @@ calculateBaselineInadequacy <- function(MNList = c("A"), aggregationGroup = c("a
     }
 
     # Check if dataDir exists
-    if (!dir.exists(dataDir)) {
-        stop("The specified dataDir does not exist")
-    }
+    #if (!dir.exists(dataDir)) {
+    #    stop("The specified dataDir does not exist")
+    #}
 
     # Load the data
-    data <- loadMapsRdaTables(dataDir)
+    #data <- loadMapsRdaTables(dataDir)
 
     # Check if all the required data is loaded in the data list
-    if (!all(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))) {
-        # Explain which data is missing
-        missingData <- c("householdConsumption", "householdDetails", "nctList", "intakeThresholds")[!(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))]
-        stop(paste("The following data is missing:", paste(missingData, collapse = ", ")))
-    }
+    #if (!all(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))) {
+    #    # Explain which data is missing
+    #    missingData <- c("householdConsumption", "householdDetails", "nctList", "intakeThresholds")[!(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))]
+    #    stop(paste("The following data is missing:", paste(missingData, collapse = ", ")))
+    #}
 
     if (length(MNList) == 0) {
         # Default to the list of all nutrients
@@ -321,10 +321,10 @@ calculateBaselineInadequacy <- function(MNList = c("A"), aggregationGroup = c("a
 
 
     # Extract the data from the list
-    householdConsumption <- data$householdConsumption
-    householdDetails <- data$householdDetails
-    nctList <- data$nctList
-    intakeThresholds <- data$intakeThresholds
+    #householdConsumption <- data$householdConsumption
+    #householdDetails <- data$householdDetails
+    #nctList <- data$nctList
+    #intakeThresholds <- data$intakeThresholds
 
     # Use the createMasterNct function to create a master NCT
     masterNCT <- createMasterNct(nctList)
