@@ -513,9 +513,9 @@ createMasterNct <- function(nctList, fctListIdCol = "fctListId", foodGenusIdCol 
 }
 
 
-#' Calculate Baseline Nutrient Inadequacy
+#' @title Calculate Baseline Nutrient Inadequacy
 #'
-#' This function calculates the baseline inadequacy of nutrients for different administrative groups.
+#' @description This function calculates the baseline inadequacy of nutrients for different administrative groups.
 #'
 #' @param MNList A character vector of nutrients. If empty, defaults to a list of all nutrients.
 #' @param aggregationGroup A character vector of administrative groups. Must not be empty.
@@ -526,7 +526,7 @@ createMasterNct <- function(nctList, fctListIdCol = "fctListId", foodGenusIdCol 
 #'
 #' @examples
 #' calculateBaselineInadequacy(MNList = c("A", "Ca"))
-calculateBaselineInadequacyCND <- function(MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name"), dataDir = here::here("data/sd123")) {
+calculateBaselineInadequacyCND <- function(householdDetails, householdConsumption, nctList, intakeThresholds, MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name")) {
     # Check if MNList is a character vector
     if (!is.character(MNList)) {
         stop("MNList must be a character vector")
@@ -543,19 +543,19 @@ calculateBaselineInadequacyCND <- function(MNList = c("A"), aggregationGroup = c
     }
 
     # Check if dataDir exists
-    if (!dir.exists(dataDir)) {
-        stop("The specified dataDir does not exist")
-    }
+    #if (!dir.exists(dataDir)) {
+    #    stop("The specified dataDir does not exist")
+    #}
 
     # Load the data
-    data <- loadMapsRdaTables(dataDir)
+    #data <- loadMapsRdaTables(dataDir)
 
     # Check if all the required data is loaded in the data list
-    if (!all(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))) {
-        # Explain which data is missing
-        missingData <- c("householdConsumption", "householdDetails", "nctList", "intakeThresholds")[!(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))]
-        stop(paste("The following data is missing:", paste(missingData, collapse = ", ")))
-    }
+    #if (!all(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))) {
+    #    # Explain which data is missing
+    #    missingData <- c("householdConsumption", "householdDetails", "nctList", "intakeThresholds")[!(c("householdConsumption", "householdDetails", "nctList", "intakeThresholds") %in% names(data))]
+    #    stop(paste("The following data is missing:", paste(missingData, collapse = ", ")))
+    #}
 
 
     if (length(MNList) == 0) {
@@ -602,10 +602,10 @@ calculateBaselineInadequacyCND <- function(MNList = c("A"), aggregationGroup = c
 
 
     # Extract the data from the list
-    householdConsumption <- data$householdConsumption
-    householdDetails <- data$householdDetails
-    nctList <- data$nctList
-    intakeThresholds <- data$intakeThresholds
+    #householdConsumption <- data$householdConsumption
+    #householdDetails <- data$householdDetails
+    #nctList <- data$nctList
+    #intakeThresholds <- data$intakeThresholds
 
     # Use the createMasterNct function to create a master NCT
     masterNCT <- createMasterNct(nctList)
