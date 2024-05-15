@@ -246,7 +246,8 @@ previewData <- function(df) {
 #' @export
 calculateBaselineInadequacyCacheData <- function(MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name")) {
     mapsdata::loadData()
-    return calculateBaselineInadequacy(householdDetails, householdConsumption, nctList, intakeThresholds, MNList = MNList, aggregationGroup = aggregationGroup)
+    stats <- calculateBaselineInadequacy(householdDetails, householdConsumption, nctList, intakeThresholds, MNList = MNList, aggregationGroup = aggregationGroup)
+    return stats
 }
 
 
