@@ -234,8 +234,22 @@ previewData <- function(df) {
         )
 }
 
+#' @description Calculate Baseline Nutrient Inadequacy (cached data)
+#'
+#' @details This function calculates the baseline inadequacy of nutrients for different administrative groups.
+#'
+#' @param MNList A character vector of nutrients. If empty, defaults to a list of all nutrients.
+#' @param aggregationGroup A character vector of administrative groups. Must not be empty.
+#' @param dataDir The directory where the data is stored.
+#'
+#' @return
+#' @export
+calculateBaselineInadequacyCacheData <- function(MNList = c("A"), aggregationGroup = c("admin0Name", "admin1Name")) {
+    mapsdata::loadData()
+    return calculateBaselineInadequacy(householdDetails, householdConsumption, nctList, intakeThresholds, MNList = MNList, aggregationGroup = aggregationGroup)
+}
 
-#' @title calculateBaselineInadequacy
+
 #' @description Calculate Baseline Nutrient Inadequacy
 #'
 #' @details This function calculates the baseline inadequacy of nutrients for different administrative groups.
